@@ -1,23 +1,27 @@
 <script>
-import Product from './Product'
-import { QLayout, QField, QCard, QDataTable, QCardSeparator, QCardMain, QCardMedia, QCardTitle } from 'quasar'
+import ProductForm from './ProductForm'
+import moment from 'moment'
+import { QLayout, QRadio, QField, QCard, QDataTable, QCardSeparator,
+  QCardMain, QCardMedia, QCardTitle } from 'quasar'
 import ProductService from './ProductService'
 export default {
   data () {
     return {
-      product: this.createProduct(),
       products: [],
       filter: ''
     }
   },
 
   components: {
-    QField, QDataTable, QLayout, QCardMedia, QCardSeparator, QCardMain, QCardTitle, QCard
+    QField, QDataTable, QRadio, QLayout, QCardMedia, QCardSeparator, QCardMain, QCardTitle, QCard, ProductForm
   },
 
   computed: {
     filtedList () {
-
+      if (this.filter) {
+        return this.products.filter(prod => prod.origin === this.filter)
+      }
+      return this.products
     }
   },
 
@@ -30,11 +34,9 @@ export default {
   },
 
   methods: {
-    createProduct () {
-      return new Product('', '', 0, 0, {}, '', 0)
-    },
     formatedDate (millis) {
-      return new Date(millis)
+      let date = new Date(millis)
+      return moment(date).format('DD/MM/YYYY')
     }
   }
 }
@@ -42,8 +44,14 @@ export default {
 
 <template>
   <q-layout>
+    <br/>
+    <q-radio v-model="filter" val='' label="Todos"  />
+    <q-radio v-model="filter" val="Nacional" label="Nacional" />
+    <q-radio v-model="filter" val="Importado" label="Importado" />
+    <br/>
+    <br/>
     <div class="row">
-      <div class="col-3" v-for="prod in products">
+      <div class="col-3" v-for="prod in filtedList">
         <q-card>
           <q-card-media>
             <img :src="prod.image" overlay-positon="full">
@@ -53,15 +61,15 @@ export default {
             <p>
               Descrição: {{ prod.description }}
               <br />
-              Preço R$:  {{ prod.price }}
+              Preço R$:  {{ prod.price.toFixed(2) }}
               <br />
               Categoria: {{ prod.category.description }}
               <br />
               Origem:    {{ prod.origin }}
               <br />
-              Preço $:   {{ prod.priceUS }}
+              Preço $:   {{ prod.priceUS.toFixed(2) }}
               <br />
-              Data da Venda $:   {{ formatedDate(prod.purchaseDate)|short }}
+              Data da Venda:   {{ formatedDate(prod.purchaseDate) }}
             </p>
           </q-card-main>
         </q-card>

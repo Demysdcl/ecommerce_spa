@@ -1,3 +1,44 @@
+<script>
+
+import {
+  QLayout,
+  QSideLink,
+  QToolbar,
+  QToolbarTitle,
+  QBtn,
+  QIcon,
+  QList,
+  QListHeader,
+  QItem,
+  QItemSide,
+  QItemMain
+} from 'quasar'
+
+import router from './router'
+
+export default {
+  name: 'index',
+  components: {
+    QLayout,
+    QSideLink,
+    QToolbar,
+    QToolbarTitle,
+    QBtn,
+    QIcon,
+    QList,
+    QListHeader,
+    QItem,
+    QItemSide,
+    QItemMain
+  },
+  data () {
+    return {
+      routes: router.routes
+    }
+  }
+}
+</script>
+
 <template>
   <q-layout
     ref="layout"
@@ -13,37 +54,25 @@
       </q-btn>
 
       <q-toolbar-title>
-        Quasar App
-        <div slot="subtitle">Running on Quasar v{{$q.version}}</div>
+        E-Commerce
       </q-toolbar-title>
     </q-toolbar>
 
     <div slot="left">
-      <!--
-        Use <q-side-link> component
-        instead of <q-item> for
-        internal vue-router navigation
-      -->
 
       <q-list no-border link inset-delimiter>
         <q-list-header>Menu</q-list-header>
-        
-        <q-item @click="launch('http://quasar-framework.org')">
-          <q-item-side icon="school" />
-          <q-item-main label="Docs" sublabel="quasar-framework.org" />
-        </q-item>
-        <q-item @click="launch('http://forum.quasar-framework.org')">
-          <q-item-side icon="record_voice_over" />
-          <q-item-main label="Forum" sublabel="forum.quasar-framework.org" />
-        </q-item>
-        <q-item @click="launch('https://gitter.im/quasarframework/Lobby')">
-          <q-item-side icon="chat" />
-          <q-item-main label="Gitter Channel" sublabel="Quasar Lobby" />
-        </q-item>
-        <q-item @click="launch('https://twitter.com/quasarframework')">
-          <q-item-side icon="rss feed" />
-          <q-item-main label="Twitter" sublabel="@quasarframework" />
-        </q-item>
+
+        <q-side-link item to="/">
+          <q-item-side icon="home" />
+          <q-item-main label="Home"/>
+        </q-side-link>
+
+        <q-side-link item to="/products">
+          <q-item-side icon="credit_card" />
+          <q-item-main label="Lista de Produtos"/>
+        </q-side-link>
+
       </q-list>
     </div>
 
@@ -53,40 +82,3 @@
 
   </q-layout>
 </template>
-
-<script>
-
-import {
-  QLayout,
-  QToolbar,
-  QToolbarTitle,
-  QBtn,
-  QIcon,
-  QList,
-  QListHeader,
-  QItem,
-  QItemSide,
-  QItemMain
-} from 'quasar'
-
-export default {
-  name: 'index',
-  components: {
-    QLayout,
-    QToolbar,
-    QToolbarTitle,
-    QBtn,
-    QIcon,
-    QList,
-    QListHeader,
-    QItem,
-    QItemSide,
-    QItemMain
-  },
-  data () {
-    return {
-
-    }
-  }
-}
-</script>
