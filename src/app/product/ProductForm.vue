@@ -2,11 +2,11 @@
 <script>
 import { QModal, QBtn } from 'quasar'
 import Product from './Product'
+
 export default {
-  props: ['product'],
   data () {
     return {
-      product: new Product().createProduct()
+      product: new Product()
     }
   },
   components: {
@@ -16,8 +16,9 @@ export default {
 </script>
 
 <template lang="html">
-  <q-modal ref="basicModal">
-    <h4>Basic Modal</h4>
+  <q-modal ref="basicModal" v-model="open">
+    <h4>Cadastrar produto</h4>
+
     <q-btn color="primary" @click="$refs.basicModal.close()">Fechar</q-btn>
   </q-modal>
 </template>

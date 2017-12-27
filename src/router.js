@@ -26,9 +26,8 @@ export default new VueRouter({
   scrollBehavior: () => ({ y: 0 }),
 
   routes: [
-    { path: '/', component: load('Hello'), label: 'Home' },
 
-    { path: '/products', component: ProductList, label: 'Lista de Produtos' },
+    { path: '/', component: ProductList, label: 'Lista de Produtos' },
     // Always leave this last one
     { path: '*', component: load('Error404') } // Not found
   ]

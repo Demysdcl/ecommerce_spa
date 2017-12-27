@@ -29,7 +29,6 @@ export default {
     this.prodService = new ProductService()
     this.prodService.findAll().then(resp => {
       this.products = resp
-      console.log(resp)
     })
   },
 

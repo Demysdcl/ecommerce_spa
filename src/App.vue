@@ -64,11 +64,6 @@ export default {
         <q-list-header>Menu</q-list-header>
 
         <q-side-link item to="/">
-          <q-item-side icon="home" />
-          <q-item-main label="Home"/>
-        </q-side-link>
-
-        <q-side-link item to="/products">
           <q-item-side icon="credit_card" />
           <q-item-main label="Lista de Produtos"/>
         </q-side-link>

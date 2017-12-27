@@ -17,6 +17,7 @@
     "moment": "^2.20.1",
     "quasar-extras": "0.x",
     "quasar-framework": "^0.14.4",
+    "vee-validate": "^2.0.0-rc.27",
     "vue": "^2.5.0",
     "vue-router": "^3.0.1"
   },

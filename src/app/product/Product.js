@@ -4,7 +4,7 @@ import moment from 'moment'
 export default class Product {
   contructor () {}
 
-  constructor (description = '', image = '', purchaseDate = 0, price = 0.0, category = Category(), origin, priceUS = 0.0) {
+  constructor (description = '', image = '', purchaseDate = 0, price = 0.0, category = new Category(''), origin, priceUS = 0.0) {
     this.description = description
     this.image = image
     this.price = price
