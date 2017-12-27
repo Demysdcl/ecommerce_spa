@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'production'
+.jsprocess.env.NODE_ENV = 'production'
 
 require('colors')
 
